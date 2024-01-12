@@ -7,14 +7,21 @@ const Page = () => {
 
   const [inputList, setInputList]= useState('');
   const [list, setList]= useState<TodoItem[]>([
-    {label: 'Make cake', checked :false    },
-    {label: 'Make coffe', checked :false   }
+    {id:1 ,label: 'Make cake', checked :false    },
+    {id:2, label: 'Make coffe', checked :false   }
   ]);
 
-    const adicionarTodo= () =>{
-      setList([...list, {label: inputList , checked : false}]);
+    const addTodo= () =>{
+      if(inputList.trim() ==='') return;
+      const lastId = list.length > 0 ? list[list.length - 1].id : 0;
+      setList([...list, {id: lastId, label: inputList , checked : false}]);
       setInputList('');
     }
+
+    const  deleteItem = (id :number) =>{
+      setList(
+        list.filter(
+          (item)=> item.id !== id))};
 
   return(
     <div className="w-screen h-screen flex  flex-col items-center ">
@@ -26,12 +33,13 @@ const Page = () => {
          value={inputList}
          onChange={e => {setInputList(e.target.value)}}
          />
-         <button onClick={adicionarTodo}>Adicionar</button>
+         <button onClick={addTodo}>Adicionar</button>
       </div>
+      
 
       <ul className="w-full max-w-lg list-disc pl-5">
         {list.map(
-          item => ( <li> {item.label} - <button className="hover:underline">[Deletar]</button> </li>)
+          (item) => ( <li > {item.label} - <button onClick={()=>deleteItem(item.id)} className="hover:underline">[Deletar]</button> </li>)
         )}
       </ul>
     </div>
