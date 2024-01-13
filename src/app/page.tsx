@@ -3,12 +3,13 @@
 import { useState } from "react";
 import {TodoItem} from "@/types/TodoItem";
 
+
 const Page = () => {
 
   const [inputList, setInputList]= useState('');
   const [list, setList]= useState<TodoItem[]>([
-    {id:1 ,label: 'Make cake', checked :false    },
-    {id:2, label: 'Make coffe', checked :false   }
+    {id:1 ,label: 'To make cake', checked :false    },
+    {id:2, label: 'To make coffe', checked :false   }
   ]);
 
     const addTodo= () =>{
@@ -38,7 +39,7 @@ const Page = () => {
       <div className="flex w-full  max-w-lg  my-3 p-3  rounded-md  bg-gray-700 border-2 border-gray-700">
         
         <input type="text"
-         placeholder="What do you would to do?" 
+         placeholder="What would you like to do?" 
          className="flex-1 border border-black p-3 text-1xl text-black rounded-md mr-3  " 
          value={inputList}
          onChange={e => {setInputList(e.target.value)}}
@@ -47,9 +48,16 @@ const Page = () => {
       </div>
       
 
-      <ul className="w-full max-w-lg list-disc pl-5">
+      <ul className="w-full max-w-lg list-disc pl-2">
         {list.map(
-          (item) => ( <li > <input className="w-5 h-5 mr-3 " onClick={e => toogleItem(item.id) } type="checkbox" aria-label="label" checked={item.checked} /> {item.label} - <button onClick={()=>deleteItem(item.id)} className="hover:underline">[Deletar]</button> </li>)
+          (item) => (
+             <li className="list-none text-wrap flex flex-row flex-wrap"> 
+             <input className="w-4 h-4 mr-2 p-3 m-1 " 
+             onClick={e => toogleItem(item.id) } 
+             type="checkbox" aria-label="label" 
+             checked={item.checked} /> {item.label}  
+              <button onClick={()=>deleteItem(item.id)} className=""> <img className="w-4 h-4 ml-2  " src="https://cdn-icons-png.flaticon.com/512/6861/6861362.png" alt="DELETE" />
+                </button> </li>)
         )}
       </ul>
     </div>
