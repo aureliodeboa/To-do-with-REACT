@@ -1,6 +1,6 @@
 # To-Do List React App
 
-Este é um projeto de To-Do List simples desenvolvido utilizando React e Next.js. O aplicativo permite que os usuários adicionem, marquem como concluídas e removam tarefas da lista.
+Este é um projeto de To-Do List simples desenvolvido utilizando React, Next.js e TypeScript. O aplicativo permite que os usuários adicionem, marquem como concluídas e removam tarefas da lista.
 ![image](https://github.com/aureliodeboa/To-do-with-React/assets/53971991/09ac41cb-d979-44f1-bc6f-a9fcc6729eac)
 
 ## Instalação
@@ -44,9 +44,8 @@ O aplicativo estará disponível em [http://localhost:3000](http://localhost:300
 
 A estrutura do projeto é organizada da seguinte forma:
 
-- `pages/`: Páginas React do Next.js.
+- `types/`: Tipos de dados criados.
 - `components/`: Componentes reutilizáveis.
-- `styles/`: Estilos globais e locais do projeto.
 - `public/`: Recursos estáticos.
 
 ## Tecnologias Utilizadas
